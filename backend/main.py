@@ -14,12 +14,13 @@ from database import(
 )
 
 app = FastAPI()
+expenseIDItr = 1
 
-origins = ['https://localhost:3000']    # react js port
+origins = ['https://localhost:3000','localhost:3000']    # react js port
 
 app.add_middleware(
         CORSMiddleware,
-        allow_origins = origins,
+        allow_origins = ['*'],
         allow_credentials = True,
         allow_methods = ['*'],
         allow_headers = ['*']
