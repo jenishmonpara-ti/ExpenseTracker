@@ -1,7 +1,7 @@
 import motor.motor_asyncio
 from expense_model import Expense
 
-client = motor.motor_asyncio.AsyncIOMotorClient('')
+client = motor.motor_asyncio.AsyncIOMotorClient('mongodb://localhost:27017/')
 database = client.ExpenseTracker
 collection = database.Expenses
 

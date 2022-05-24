@@ -2,8 +2,9 @@ from pydantic import BaseModel
 import datetime
 
 class Expense(BaseModel) : 
+        _id : str
         expenseID : int
-        date : datetime.date
+        date : str
         category : str
         amount : int
 

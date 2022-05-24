@@ -1,11 +1,11 @@
-from model.py import Expense 
+from expense_model import Expense 
 from pydantic import BaseModel
 
 
 def expense_serializer(expense : Expense) -> dict: 
         return {
                 'expenseID' : expense.expenseID,
-                'date' : str(expense.expenseID.to),
+                'date' : str(expense.expenseID),
                 'category' : expense.category,
                 'amount' : expense.amount
         }

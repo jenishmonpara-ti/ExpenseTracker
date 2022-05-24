@@ -1,4 +1,5 @@
 # main.py
+import json
 from datetime import datetime
 from urllib import response
 from expense_model import Expense
@@ -27,19 +28,21 @@ app.add_middleware(
 @app.get("/api/expenses")
 async def get_expenses() :
         response = await fetch_all_expenses()
+        print(type(response))
         if response : 
                 return response
         raise HTTPException(404)
 
 @app.get("/api/expense{expenseID}")
-async def get_expense() :
+async def get_expense(expenseID : int) :
         response = await fetch_one_expense(expenseID)
+        del response['_id']
         if response : 
                 return response
         raise HTTPException(404,f'No expense with expenseID {expenseID}')
 
 
-@app.post('/api/expense', response_model = Expense)
+@app.post('/api/expense/', response_model = Expense)
 async def post_record(expense : Expense) : 
         response = await insert_expense(expense.dict()) # type(response) = JSON string
         if response : 
