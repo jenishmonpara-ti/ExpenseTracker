@@ -7,10 +7,6 @@ client = motor.motor_asyncio.AsyncIOMotorClient('mongodb://localhost:27017/')
 database = client.ExpenseTracker
 collection = database.Expenses
 
-async def fetch_one_expense(expenseID : int):
-    document = await collection.find_one({"expenseID": expenseID})
-    return document
-
 async def fetch_all_expenses():
     todos = []
     cursor = collection.find({})
@@ -24,11 +20,9 @@ async def insert_expense(expense : Expense):
     return document
 
 
-async def update_expense(expenseID : int, amount : int):
-    await collection.update_one({"expenseID": expenseID}, {"$set": {"amount": amount}})
-    document = await collection.find_one({"expenseID": expenseID})
-    return document
-
 async def remove_expense(expenseID : int):
-    await collection.delete_one({"expenseID": expenseID})
+    try : 
+        await collection.delete_one({"expenseID": expenseID})
+    except : 
+        logging.error('Error from remove expense')
     return True

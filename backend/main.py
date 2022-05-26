@@ -7,9 +7,7 @@ from fastapi import FastAPI,HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from database import(
         fetch_all_expenses,
-        fetch_one_expense,
         insert_expense,
-        update_expense,
         remove_expense
 )
 
