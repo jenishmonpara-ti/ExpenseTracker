@@ -15,6 +15,8 @@ from database import(
 
 app = FastAPI()
 expenseIDItr = 1
+import logging
+logging.basicConfig(filename = '../logs.log', level = logging.ERROR)
 
 origins = ['https://localhost:3000','localhost:3000']    # react js port
 
@@ -58,8 +60,9 @@ async def put_expense(expenseID : int, date : str, category : str, amount : int)
                 return response
         raise HTTPException(404,f'Expense with expenseID {expenseID} not found.')
 
-@app.delete('api/expense{expenseID}', response_model = Expense)
+@app.delete('/api/expense{expenseID}', response_model = Expense)
 async def delete_expense(expenseID : int) : 
+        logging.error(f'expenseid : {expenseID}')
         response = await remove_expense(expenseID)
         if response : 
                 return response
