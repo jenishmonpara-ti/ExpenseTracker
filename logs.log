@@ -149,3 +149,85 @@ INFO:uvicorn.error:Shutting down
 INFO:uvicorn.error:Waiting for application shutdown.
 INFO:uvicorn.error:Application shutdown complete.
 INFO:uvicorn.error:Finished server process [30390]
+INFO:uvicorn.error:Started server process [30774]
+INFO:uvicorn.error:Waiting for application startup.
+INFO:uvicorn.error:Application startup complete.
+INFO:uvicorn.error:Shutting down
+INFO:uvicorn.error:Waiting for application shutdown.
+INFO:uvicorn.error:Application shutdown complete.
+INFO:uvicorn.error:Finished server process [30774]
+INFO:uvicorn.error:Started server process [37378]
+INFO:uvicorn.error:Waiting for application startup.
+INFO:uvicorn.error:Application startup complete.
+ERROR:root:expenseid : 1653656390
+ERROR:uvicorn.error:Exception in ASGI application
+Traceback (most recent call last):
+  File "/opt/miniconda3/lib/python3.9/site-packages/uvicorn/protocols/http/httptools_impl.py", line 371, in run_asgi
+    result = await app(self.scope, self.receive, self.send)
+  File "/opt/miniconda3/lib/python3.9/site-packages/uvicorn/middleware/proxy_headers.py", line 59, in __call__
+    return await self.app(scope, receive, send)
+  File "/opt/miniconda3/lib/python3.9/site-packages/fastapi/applications.py", line 199, in __call__
+    await super().__call__(scope, receive, send)
+  File "/opt/miniconda3/lib/python3.9/site-packages/starlette/applications.py", line 112, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/opt/miniconda3/lib/python3.9/site-packages/starlette/middleware/errors.py", line 181, in __call__
+    raise exc from None
+  File "/opt/miniconda3/lib/python3.9/site-packages/starlette/middleware/errors.py", line 159, in __call__
+    await self.app(scope, receive, _send)
+  File "/opt/miniconda3/lib/python3.9/site-packages/starlette/middleware/cors.py", line 86, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/opt/miniconda3/lib/python3.9/site-packages/starlette/middleware/cors.py", line 142, in simple_response
+    await self.app(scope, receive, send)
+  File "/opt/miniconda3/lib/python3.9/site-packages/starlette/exceptions.py", line 82, in __call__
+    raise exc from None
+  File "/opt/miniconda3/lib/python3.9/site-packages/starlette/exceptions.py", line 71, in __call__
+    await self.app(scope, receive, sender)
+  File "/opt/miniconda3/lib/python3.9/site-packages/starlette/routing.py", line 580, in __call__
+    await route.handle(scope, receive, send)
+  File "/opt/miniconda3/lib/python3.9/site-packages/starlette/routing.py", line 241, in handle
+    await self.app(scope, receive, send)
+  File "/opt/miniconda3/lib/python3.9/site-packages/starlette/routing.py", line 52, in app
+    response = await func(request)
+  File "/opt/miniconda3/lib/python3.9/site-packages/fastapi/routing.py", line 209, in app
+    response_data = await serialize_response(
+  File "/opt/miniconda3/lib/python3.9/site-packages/fastapi/routing.py", line 126, in serialize_response
+    raise ValidationError(errors, field.type_)
+pydantic.error_wrappers.ValidationError: 1 validation error for Expense
+response
+  value is not a valid dict (type=type_error.dict)
+ERROR:root:expenseid : 1653593247
+ERROR:uvicorn.error:Exception in ASGI application
+Traceback (most recent call last):
+  File "/opt/miniconda3/lib/python3.9/site-packages/uvicorn/protocols/http/httptools_impl.py", line 371, in run_asgi
+    result = await app(self.scope, self.receive, self.send)
+  File "/opt/miniconda3/lib/python3.9/site-packages/uvicorn/middleware/proxy_headers.py", line 59, in __call__
+    return await self.app(scope, receive, send)
+  File "/opt/miniconda3/lib/python3.9/site-packages/fastapi/applications.py", line 199, in __call__
+    await super().__call__(scope, receive, send)
+  File "/opt/miniconda3/lib/python3.9/site-packages/starlette/applications.py", line 112, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/opt/miniconda3/lib/python3.9/site-packages/starlette/middleware/errors.py", line 181, in __call__
+    raise exc from None
+  File "/opt/miniconda3/lib/python3.9/site-packages/starlette/middleware/errors.py", line 159, in __call__
+    await self.app(scope, receive, _send)
+  File "/opt/miniconda3/lib/python3.9/site-packages/starlette/middleware/cors.py", line 86, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/opt/miniconda3/lib/python3.9/site-packages/starlette/middleware/cors.py", line 142, in simple_response
+    await self.app(scope, receive, send)
+  File "/opt/miniconda3/lib/python3.9/site-packages/starlette/exceptions.py", line 82, in __call__
+    raise exc from None
+  File "/opt/miniconda3/lib/python3.9/site-packages/starlette/exceptions.py", line 71, in __call__
+    await self.app(scope, receive, sender)
+  File "/opt/miniconda3/lib/python3.9/site-packages/starlette/routing.py", line 580, in __call__
+    await route.handle(scope, receive, send)
+  File "/opt/miniconda3/lib/python3.9/site-packages/starlette/routing.py", line 241, in handle
+    await self.app(scope, receive, send)
+  File "/opt/miniconda3/lib/python3.9/site-packages/starlette/routing.py", line 52, in app
+    response = await func(request)
+  File "/opt/miniconda3/lib/python3.9/site-packages/fastapi/routing.py", line 209, in app
+    response_data = await serialize_response(
+  File "/opt/miniconda3/lib/python3.9/site-packages/fastapi/routing.py", line 126, in serialize_response
+    raise ValidationError(errors, field.type_)
+pydantic.error_wrappers.ValidationError: 1 validation error for Expense
+response
+  value is not a valid dict (type=type_error.dict)

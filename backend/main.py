@@ -1,5 +1,6 @@
 # main.py
 import json
+import time
 from datetime import datetime
 from urllib import response
 from expense_model import Expense
@@ -34,29 +35,17 @@ async def get_expenses() :
                 return response
         raise HTTPException(404)
 
-@app.get("/api/expense{expenseID}")
-async def get_expense(expenseID : int) :
-        response = await fetch_one_expense(expenseID)
-        del response['_id']
-        if response : 
-                return response
-        raise HTTPException(404,f'No expense with expenseID {expenseID}')
 
 
 @app.post('/api/expense/', response_model = Expense)
 async def post_record(expense : Expense) : 
+        expense.expenseID = int(time.time())
         response = await insert_expense(expense.dict()) # type(response) = JSON string
         if response : 
                 return response
         raise HTTPException(400,'Something went wrong')
 
 
-@app.put('/api/expense{expenseID}', response_model = Expense)
-async def put_expense(expenseID : int, date : str, category : str, amount : int) :
-        response = await update_expense(expenseID, amount)
-        if response : 
-                return response
-        raise HTTPException(404,f'Expense with expenseID {expenseID} not found.')
 
 @app.delete('/api/expense{expenseID}', response_model = Expense)
 async def delete_expense(expenseID : int) : 
