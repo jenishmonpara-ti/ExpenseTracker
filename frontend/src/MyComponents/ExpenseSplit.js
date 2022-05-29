@@ -3,42 +3,51 @@ import React, { useEffect, useState } from "react";
 
 const ExpenseSplitView = () => {
 
-        const [expenseSplitList,setSplitList] = useState([{'Category' : 100}])
+        const [expenseSplitList, setSplitList] = useState([{ 'category': "category", amount: 40 }])
 
-        useEffect( () => {
+        useEffect(() => {
                 axios.get('http://localhost:8000/api/expensesplit')
-                .then(
-                        res => {
-                                setSplitList(res.data)
-                        }
-                )
+                        .then(
+                                res => {
+                                        setSplitList(res.data)
+                                }
+                        )
         });
 
         return (
                 <>
-                <div>
-			<table class="table table-striped">
-				<thead>
-					<tr>
-						<th scope="col">Category</th>
-						<th scope="col">Amount</th>
-					</tr>
-				</thead>
-				<tbody>
-					{expenseSplitList.map((expenseCategory) => {
-						<tr>
-                                                        <td>
-                                                                {expenseCategory.category}
-                                                        </td>
-                                                        <td>
-                                                                {expenseCategory.value}
-                                                        </td>
-                                                </tr>
-					})}
-				</tbody>
-			</table>
+                        <div>
+                                <h5 className="card text-white bg-dark mb-3 ">Expense Split</h5>
 
-		</div>
+                                <table class="table table-striped">
+                                        <thead>
+                                                <tr>
+                                                        <th scope="col">Category</th>
+                                                        <th scope="col">Amount</th>
+                                                </tr>
+                                        </thead>
+                                        <tbody>
+                                                {expenseSplitList.map((expenseCategory) => {
+                                                        return (
+                                                                <>
+                                                                        <tr>
+                                                                                <td>
+                                                                                        {expenseCategory.category}
+                                                                                </td>
+                                                                                <td>
+                                                                                        {expenseCategory.amount}
+                                                                                </td>
+                                                                        </tr>
+                                                                </>
+                                                        );
+
+                                                })}
+                                        </tbody>
+                                </table>
+
+                        </div>
                 </>
         )
 }
+
+export default ExpenseSplitView

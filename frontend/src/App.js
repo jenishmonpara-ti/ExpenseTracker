@@ -7,6 +7,7 @@ import SumOfExpenses from './MyComponents/SumOfExpenses';
 import AllExpenses from './MyComponents/AllExpenses';
 import AddExpense from './MyComponents/AddExpense';
 import Footer from './MyComponents/Footer';
+import ExpenseSplitView from './MyComponents/ExpenseSplit';
 
 function App() {
 	return (
@@ -20,15 +21,15 @@ function App() {
 
 			<div className="App list-group-item  justify-content-center align-items-center mx-auto" style={{ "width": "400px", "backgroundColor": "white", "marginTop": "15px" }}>
 				<AddExpense />
-			</div>
-
-			<div className="App list-group-item  justify-content-center align-items-center mx-auto" style={{ "width": "400px", "backgroundColor": "white", "marginTop": "15px" }}>
+				<br/>
+				<br/>
+				<br/>
 				<AllExpenses />
+				<br/>
+				<br/>
+				<br/>
+				<ExpenseSplitView />
 			</div>
-
-			<SumOfExpenses />
-			<Footer />
-
 
 		</>
 	);

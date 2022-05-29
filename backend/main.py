@@ -31,7 +31,6 @@ app.add_middleware(
 @app.get("/api/expenses")
 async def get_expenses() :
         response = await fetch_all_expenses()
-        print(type(response[0]))
         if response : 
                 return response
         raise HTTPException(404)

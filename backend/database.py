@@ -20,9 +20,11 @@ async def get_split_db() :
 
     total = sum(expenses.values())
     expenses['Total'] = total
-    expense_split = [ExpenseSplit(key, val) for key,val in expenses.items()]
-    logging.error(expense_split)
-    return expense_split
+    expenseSplit = []
+    for key,val in expenses.items() : 
+        expenseSplit.append(ExpenseSplit(key,val))
+    # logging.error(expenseSplit)
+    return expenseSplit
 
 async def fetch_all_expenses():
     todos = []

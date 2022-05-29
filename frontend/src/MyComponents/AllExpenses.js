@@ -10,6 +10,8 @@ export default function ExpensesView() {
 		axios.get('http://localhost:8000/api/expenses')
 			.then(res => {
 				setExpenseList(res.data)
+				// console.log(res.data)
+
 			})
 	});
 
@@ -17,6 +19,9 @@ export default function ExpensesView() {
 
 	return (
 		<div>
+
+		<h5 className="card text-white bg-dark mb-3 ">All Expenses</h5>
+
 			<table class="table table-striped">
 				<thead>
 					<tr>
