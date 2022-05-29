@@ -1,5 +1,5 @@
 import motor.motor_asyncio
-from expense_model import Expense
+from models import Expense , ExpenseSplit
 import logging
 logging.basicConfig(filename = '../logs.log', level = logging.ERROR)
 
@@ -20,7 +20,7 @@ async def get_split_db() :
 
     total = sum(expenses.values())
     expenses['Total'] = total
-    expense_split = [{f'{key}' : val} for key,val in expenses.items()]
+    expense_split = [ExpenseSplit(key, val) for key,val in expenses.items()]
     logging.error(expense_split)
     return expense_split
 

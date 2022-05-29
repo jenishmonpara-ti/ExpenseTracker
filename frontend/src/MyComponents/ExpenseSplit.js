@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 
 const ExpenseSplitView = () => {
 
-        const [splitList,setSplitList] = useState([{'Category' : 100}])
+        const [expenseSplitList,setSplitList] = useState([{'Category' : 100}])
 
         useEffect( () => {
                 axios.get('http://localhost:8000/api/expensesplit')

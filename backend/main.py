@@ -3,7 +3,7 @@ import json
 import time
 from datetime import datetime
 from urllib import response
-from expense_model import Expense
+from models import Expense
 from fastapi import FastAPI,HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from database import(
@@ -31,7 +31,7 @@ app.add_middleware(
 @app.get("/api/expenses")
 async def get_expenses() :
         response = await fetch_all_expenses()
-        print(type(response))
+        print(type(response[0]))
         if response : 
                 return response
         raise HTTPException(404)

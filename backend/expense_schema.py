@@ -1,4 +1,4 @@
-from expense_model import Expense 
+from models import Expense 
 from pydantic import BaseModel
 
 
