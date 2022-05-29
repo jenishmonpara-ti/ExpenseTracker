@@ -9,7 +9,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from database import(
         fetch_all_expenses,
         insert_expense,
-        remove_expense
+        remove_expense,
+        get_split_db
 )
 
 app = FastAPI()
@@ -35,7 +36,12 @@ async def get_expenses() :
                 return response
         raise HTTPException(404)
 
-
+@app.get("/api/expensesplit")
+async def get_split() : 
+        response = await get_split_db()
+        if response : 
+                return response
+        raise HTTPException(404)
 
 @app.post('/api/expense/', response_model = Expense)
 async def post_record(expense : Expense) : 
