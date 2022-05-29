@@ -6,3 +6,5 @@
 - npm start     # to start frontend
 
 - reinstall requirements using "pip3 install -r requirements.txt" when uvicorn server stops or motor starting
+
+- git reset --hard e5d50dd1efb71da044b110afa71ad637cba36bf6
