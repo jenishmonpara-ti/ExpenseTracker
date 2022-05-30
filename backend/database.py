@@ -42,6 +42,7 @@ async def insert_expense(expense : Expense):
 async def remove_expense(expenseID : int):
     try : 
         await collection.delete_one({"expenseID": expenseID})
-    except : 
+    except Exception as e: 
         logging.error('Error from remove expense')
+        logging.error(e)
     return True
