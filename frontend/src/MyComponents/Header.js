@@ -15,8 +15,7 @@ import ExpenseSplitView from './ExpenseSplit';
 export default function Header(props) {
 	return (
 		<>
-			<Router>
-				<nav className="navbar navbar-expand-lg bg-light">
+			<nav className="navbar navbar-expand-lg bg-light">
 					<div className="container-fluid">
 						{/* <a className="navbar-brand" href="#" align = 'center'>Expense Tracker</a> */}
 						<button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,6 +26,7 @@ export default function Header(props) {
 							<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
 								<li class="nav-item">
+									{/* to = 'path' refers to path attr from <Route> in App.js */}
 									<Link class="nav-link" to="/addexpense">Add Expense</Link>
 								</li>
 
@@ -48,50 +48,6 @@ export default function Header(props) {
 						</div>
 					</div>
 				</nav>
-
-				<Routes>
-					<Route path="/addexpense" element={
-						<>
-							<div className="App list-group-item  justify-content-center align-items-center mx-auto" style={{ "width": "400px", "backgroundColor": "white", "marginTop": "15px" }}>
-								<br />
-								<h1 className="card text-white bg-primary mb-5" styleName="max-width: 20rem;">Expense Manager</h1>
-
-								<br />
-								<br />
-								<AddExpense />
-							</div>
-						</>
-
-
-					} />
-					<Route path="/allexpenses" element={
-						<>
-							<div className="App list-group-item  justify-content-center align-items-center mx-auto" style={{ "width": "400px", "backgroundColor": "white", "marginTop": "15px" }}>
-								<br />
-								<h1 className="card text-white bg-primary mb-5" styleName="max-width: 20rem;">Expense Manager</h1>
-
-								<br />
-								<br />
-								<AllExpenses />
-							</div>
-						</>
-					} />
-					<Route path="/expensesplit" element={
-						<>
-							<div className="App list-group-item  justify-content-center align-items-center mx-auto" style={{ "width": "400px", "backgroundColor": "white", "marginTop": "15px" }}>
-								<br />
-								<h1 className="card text-white bg-primary mb-5" styleName="max-width: 20rem;">Expense Manager</h1>
-
-								<br />
-								<br />
-								<ExpenseSplitView />
-							</div>
-						</>
-					} />
-
-				</Routes>
-
-			</Router>
 		</>
 
 	)
