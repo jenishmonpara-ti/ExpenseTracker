@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import RangePicker from "./RangePicker";
 
 const ExpenseSplitView = () => {
 
@@ -16,6 +17,7 @@ const ExpenseSplitView = () => {
 
         return (
                 <>
+                        <RangePicker/>
                         <div>
                                 <h5 className="card text-white bg-dark mb-3 ">Expense Split</h5>
 

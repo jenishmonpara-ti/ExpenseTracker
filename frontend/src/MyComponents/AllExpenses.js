@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ExpenseItem from './Expense'
 import axios from 'axios'
+import RangePicker from './RangePicker';
 
 
 
@@ -18,28 +19,32 @@ export default function ExpensesView() {
 	<h5 className="card text-white bg-dark mb-3 ">All Expenses</h5>
 
 	return (
-		<div>
+		<>
+			<RangePicker/>
+			<div>
 
-		<h5 className="card text-white bg-dark mb-3 ">All Expenses</h5>
+				<h5 className="card text-white bg-dark mb-3 ">All Expenses</h5>
 
-			<table class="table table-striped">
-				<thead>
-					<tr>
-						<th scope="col">Date</th>
-						<th scope="col">Category</th>
-						<th scope="col">Amount</th>
-						<th scope="col">   </th>
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th scope="col">Date</th>
+							<th scope="col">Category</th>
+							<th scope="col">Amount</th>
+							<th scope="col">   </th>
 
-					</tr>
-				</thead>
-				<tbody>
-					{expenseList.map((expense) => {
-						return <ExpenseItem expense={expense} />
-					})}
-				</tbody>
-			</table>
+						</tr>
+					</thead>
+					<tbody>
+						{expenseList.map((expense) => {
+							return <ExpenseItem expense={expense} />
+						})}
+					</tbody>
+				</table>
 
-		</div>
+			</div>
+
+		</>
 	)
 }
 

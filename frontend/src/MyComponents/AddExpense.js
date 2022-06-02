@@ -22,7 +22,8 @@ const AddExpense = () => {
     <div className="card-body mb-4">
       <h5 className="card text-white bg-dark mb-3 ">Add Expense</h5>
       <span className="card-text">
-        Date : <br />
+        <label>Date : </label>
+        <br />
         <DatePicker className="mb-2 form-control dateIn" onChange={(date) => { setDate(date) }} value={date} maxDate={new Date()} />
         <input type='number' className="mb-2 form-control titleIn" value={amount} onChange={event => setAmount(event.target.value)} placeholder='Amount' />
         <input type='text' className="mb-2 form-control desIn" value={category} onChange={event => setCategory(event.target.value)} placeholder='Category' />
