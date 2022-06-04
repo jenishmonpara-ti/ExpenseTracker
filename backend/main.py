@@ -10,7 +10,9 @@ from database import(
         fetch_all_expenses,
         insert_expense,
         remove_expense,
-        get_split_db
+        get_split_db,
+        setStartDateDB,
+        setEndDateDB
 )
 
 app = FastAPI()
@@ -33,7 +35,10 @@ async def get_expenses() :
         response = await fetch_all_expenses()
         if response : 
                 return response
-        raise HTTPException(404)
+        else :
+                print('response empty')
+                print(response)
+                return response
 
 @app.get("/api/expensesplit")
 async def get_split() : 
@@ -59,3 +64,19 @@ async def delete_expense(expenseID : int) :
         if response : 
                 return response
         raise HTTPException(404,f'Expense with expenseID {expenseID} not found.')
+
+
+@app.post('/api/startDate/{date}')
+async def setStartDate(date : str) : 
+        logging.error('date recieved ' + date)
+        response = await setStartDateDB(date)
+        logging.error(response)
+        return response
+
+@app.post('/api/endDate/{date}')
+async def setEndDate(date : str) : 
+        print('here')
+        logging.error('date recieved ' + date)
+        response = await setEndDateDB(date)
+        logging.error(response)
+        return response

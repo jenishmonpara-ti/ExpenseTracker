@@ -1,12 +1,16 @@
 import motor.motor_asyncio
 from models import Expense , ExpenseSplit
 import logging
-from datetime import date
-logging.basicConfig(filename = '../logs.log', level = logging.ERROR)
+import datetime
 
+
+logging.basicConfig(filename = '../logs.log', level = logging.ERROR)
 client = motor.motor_asyncio.AsyncIOMotorClient('mongodb://localhost:27017/')
 database = client.ExpenseTracker
 collection = database.Expenses
+
+startDate : datetime.date = datetime.date.today()
+endDate : datetime.date = datetime.date.today()
 
 
 async def get_split_db() : 
@@ -14,10 +18,12 @@ async def get_split_db() :
     cursor = collection.find({})
     async for document in cursor : 
         expense = Expense(**document)
-        try : 
-            expenses[f"{expense.category}"] += expense.amount
-        except KeyError : 
-            expenses[f"{expense.category}"] = expense.amount
+        expenseDate = datetime.date.fromisoformat(expense.date)
+        if startDate <= expenseDate and expenseDate <= endDate : 
+            try : 
+                expenses[f"{expense.category}"] += expense.amount
+            except KeyError : 
+                expenses[f"{expense.category}"] = expense.amount
 
     total = sum(expenses.values())
     expenses['Total'] = total
@@ -28,11 +34,19 @@ async def get_split_db() :
     return expenseSplit
 
 async def fetch_all_expenses():
-    todos = []
+    expenses = []
     cursor = collection.find({})
+    global startDate, endDate
     async for document in cursor:
-        todos.append(Expense(**document))
-    return todos
+        expense = Expense(**document)
+        expenseDate = datetime.date.fromisoformat(expense.date)
+        if startDate <= expenseDate and expenseDate <= endDate : 
+            try : 
+                expenses.append(Expense(**document))
+            except Exception as e : 
+                logging.error(e , exc_info = True)
+        
+    return expenses
 
 
 
@@ -63,7 +77,7 @@ def get_date(date : str) -> str :
     try : 
         response += get_month[vals[1]]
     except Exception as e:
-        # logging.critical(e, exc_info=True)
+        logging.critical(e, exc_info=True)
         response += '09'
 
     response += '-'
@@ -88,3 +102,14 @@ async def remove_expense(expenseID : int):
         logging.error('Error from remove expense')
         logging.error(e)
     return True
+
+
+async def setStartDateDB(date : str) : 
+    # reform date : str
+    globals()['startDate'] = datetime.date.fromisoformat(get_date(date))
+    return str('start date set to ' + str(globals()['startDate']))
+
+async def setEndDateDB(date : str) : 
+    # reform date : str
+    globals()['endDate'] = datetime.date.fromisoformat(get_date(date))
+    return str('end date set to ' + str(globals()['endDate']))
