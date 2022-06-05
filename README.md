@@ -1,4 +1,4 @@
-- mongod --config /usr/local/etc/mongod.conf    # to start DB
+- mongod --config ./mongod.conf    # to start DB
 - connect ExpenseTracker from MongoCompass
 - uvicorn main:app --reload     # to start backend from backend dir
 - npx create-react-app frontend         # from workspace directory

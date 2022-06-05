@@ -1,0 +1,1 @@
+', 'category': 'clothes', 'amount': 2500}

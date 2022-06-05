@@ -12,7 +12,9 @@ from database import(
         remove_expense,
         get_split_db,
         setStartDateDB,
-        setEndDateDB
+        setEndDateDB,
+        getStartDateDB,
+        getEndDateDB
 )
 
 app = FastAPI()
@@ -33,12 +35,7 @@ app.add_middleware(
 @app.get("/api/expenses")
 async def get_expenses() :
         response = await fetch_all_expenses()
-        if response : 
-                return response
-        else :
-                print('response empty')
-                print(response)
-                return response
+        return response
 
 @app.get("/api/expensesplit")
 async def get_split() : 
@@ -59,7 +56,6 @@ async def post_record(expense : Expense) :
 
 @app.delete('/api/expense{expenseID}', response_model = Expense)
 async def delete_expense(expenseID : int) : 
-        logging.error(f'expenseid : {expenseID}')
         response = await remove_expense(expenseID)
         if response : 
                 return response
@@ -68,15 +64,23 @@ async def delete_expense(expenseID : int) :
 
 @app.post('/api/startDate/{date}')
 async def setStartDate(date : str) : 
-        logging.error('date recieved ' + date)
         response = await setStartDateDB(date)
         logging.error(response)
         return response
 
 @app.post('/api/endDate/{date}')
 async def setEndDate(date : str) : 
-        print('here')
-        logging.error('date recieved ' + date)
         response = await setEndDateDB(date)
-        logging.error(response)
         return response
+
+@app.get('/api/endDate')
+async def getEndDate() : 
+        response = await getEndDateDB()
+        return response
+
+
+@app.get('/api/startDate')
+async def getStartDate() : 
+        response = await getStartDateDB()
+        return response
+

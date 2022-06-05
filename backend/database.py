@@ -105,11 +105,18 @@ async def remove_expense(expenseID : int):
 
 
 async def setStartDateDB(date : str) : 
-    # reform date : str
     globals()['startDate'] = datetime.date.fromisoformat(get_date(date))
     return str('start date set to ' + str(globals()['startDate']))
 
 async def setEndDateDB(date : str) : 
-    # reform date : str
     globals()['endDate'] = datetime.date.fromisoformat(get_date(date))
     return str('end date set to ' + str(globals()['endDate']))
+
+async def getStartDateDB() : 
+    response = {'yyyy' : globals()['startDate'].year , 'mm' : globals()['startDate'].month , 'dd' : globals()['startDate'].day}
+    logging.error(response)
+    return response
+
+async def getEndDateDB() : 
+    return {'yyyy' : globals()['endDate'].year , 'mm' : globals()['endDate'].month , 'dd' : globals()['endDate'].day}
+

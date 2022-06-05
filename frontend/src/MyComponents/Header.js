@@ -1,15 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'  // for type defining
 import {
-	BrowserRouter as Router,
-	Switch,
-	Route,
-	Routes,
 	Link
 } from "react-router-dom";
-import AddExpense from './AddExpense';
-import AllExpenses from './AllExpenses';
-import ExpenseSplitView from './ExpenseSplit';
+
 
 
 export default function Header(props) {
