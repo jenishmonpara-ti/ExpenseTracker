@@ -16,13 +16,12 @@ from database import(
         getStartDateDB,
         getEndDateDB
 )
-
-app = FastAPI()
-expenseIDItr = 1
 import logging
 logging.basicConfig(filename = '../logs.log', level = logging.ERROR)
 
 origins = ['https://localhost:3000','localhost:3000']    # react js port
+
+app = FastAPI()
 
 app.add_middleware(
         CORSMiddleware,
@@ -65,7 +64,6 @@ async def delete_expense(expenseID : int) :
 @app.post('/api/startDate/{date}')
 async def setStartDate(date : str) : 
         response = await setStartDateDB(date)
-        logging.error(response)
         return response
 
 @app.post('/api/endDate/{date}')

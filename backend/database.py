@@ -114,7 +114,6 @@ async def setEndDateDB(date : str) :
 
 async def getStartDateDB() : 
     response = {'yyyy' : globals()['startDate'].year , 'mm' : globals()['startDate'].month , 'dd' : globals()['startDate'].day}
-    logging.error(response)
     return response
 
 async def getEndDateDB() : 

@@ -1,17 +1,13 @@
-import logo from './logo.svg';
 import './App.css';
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import React from 'react'
 import Header from './MyComponents/Header'
 import AllExpenses from './MyComponents/AllExpenses';
 import AddExpense from './MyComponents/AddExpense';
 import ExpenseSplitView from './MyComponents/ExpenseSplit';
 import {
 	BrowserRouter as Router,
-	Switch,
 	Route,
-	Routes,
-	Link
+	Routes
 } from "react-router-dom";
 
 
