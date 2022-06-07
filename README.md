@@ -7,13 +7,15 @@
 
 
 ## Initiating  server
+- mkdir backend & cd backend
 - pip3 install -r requirements.txt
 - uvicorn main:app --reload     # to start backend from backend dir
 - reinstall requirements using "pip3 install -r requirements.txt" when uvicorn server stops or motor starting
 
 
 ## frontend
-- (you do not need to execute this if you are not coding from scratch) npx create-react-app frontend         # from workspace directory
+- npx create-react-app frontend         # from workspace directory (you do not need to execute this if you are not coding from scratch) 
+- cd ./frontend
 - npm install axios bootstrap
 - npm install react-date-picker
 - npm start     # to start frontend
